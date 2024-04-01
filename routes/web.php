@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HodController;
+use App\Http\Controllers\InchargeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,16 +32,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Dashboard routes
 Route::middleware(['authCheck'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+        Route::get('/dashboard', [AdminController::class, 'admin'])->name('dashboard');
     });
 
     Route::prefix('hod')->name('hod.')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'hod'])->name('dashboard');
+        Route::get('/dashboard', [HodController::class, 'hod'])->name('dashboard');
     });
 
     Route::prefix('student')->name('incharge.')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'incharge'])->name('dashboard');
+        Route::get('/dashboard', [InchargeController::class, 'incharge'])->name('dashboard');
     });
 });
+
+route::get('/addhod',[adminController::class,'addhod']);    
 
 
