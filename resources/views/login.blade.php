@@ -65,7 +65,7 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate action="{{ route('login') }}" method="post">
+                  <form class="row g-3 needs-validation" novalidate action="{{ route('login.submit') }}" method="post">
                     @csrf <!-- CSRF protection -->
                 
                     <div class="col-12">
@@ -93,7 +93,7 @@
                         <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                        <p class="small mb-0">Don't have an account? <a href="{{ route('signup') }}">Create an account</a></p>
+                        <p class="small mb-0">Don't have an account? <a href="{{ route('signup.form') }}">Create an account</a></p>
                     </div>
                 </form>
                 
