@@ -19,12 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Default welcome page route
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 // Authentication routes
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::get('/', [AuthController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup.form');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
