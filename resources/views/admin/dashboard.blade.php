@@ -46,7 +46,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">NiceAdmin</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -166,15 +166,18 @@
                         </li>
 
                         <li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                             <a class="dropdown-item d-flex align-items-center" href=""
-                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">    
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
                         </li>
+
+
 
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
@@ -190,13 +193,39 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
+                </a>
+
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
+
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('showadduser') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Add user</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
         </ul>
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('show.user') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Add user</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
 
     </aside><!-- End Sidebar-->
 
@@ -212,6 +241,58 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+
+
+
+
+        <section class="section dashboard">
+
+            <div class="row">
+
+
+                <!-- Customers Card -->
+                <div class="col-xxl-6 col-xl-12">
+                    <div class="card info-card customers-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Incharge<span>| department</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $userCount}}</h6>
+                                </div>
+                            </div>
+                            <!-- Use Bootstrap button styles for the "see all" link -->
+                            <a href="{{ route('show.user') }}" class="btn btn-secondary text-light mt-3">Show all</a>
+                        </div>
+                    </div>
+                </div><!-- End Customers Card -->
+
+
+                 <!-- Customers Card -->
+                 <div class="col-xxl-6 col-xl-12">
+                    <div class="card info-card customers-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Students<span>| department</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6></h6>
+                                </div>
+                            </div>
+                            <!-- Use Bootstrap button styles for the "see all" link -->
+                            <a href="show all" class="btn btn-secondary text-light mt-3">Show all</a>
+                        </div>
+                    </div>
+                </div><!-- End Customers Card -->       
+
+            </div>
+
+        </section>
+
 
         <section class="section">
             <div class="row">
@@ -238,8 +319,19 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-6">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Example Card</h5>
+
+                                <a href="{{ route('showadduser') }}">add user</a>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
         </section>
 
     </main><!-- End #main -->

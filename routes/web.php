@@ -44,6 +44,14 @@ Route::middleware(['authCheck'])->group(function () {
     });
 });
 
-route::get('/addhod',[adminController::class,'addhod']);    
+
+
+route::get('/adduser',[adminController::class,'showadduser'])->name('showadduser');    
+
+Route::post('/add-user', [AdminController::class, 'add_user'])->name('add.user');
+
+Route::get('/show-user', [AdminController::class, 'show_allusers'])->name('show.user');
+
+
 
 

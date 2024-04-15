@@ -46,7 +46,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="{{ asset('assets/img/logo.png')}}" alt="">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">NiceAdmin</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -166,16 +166,16 @@
                         </li>
 
                         <li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                             <a class="dropdown-item d-flex align-items-center" href=""
-                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">    
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
                         </li>
-
 
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
@@ -188,6 +188,8 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
+
+
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
@@ -199,49 +201,82 @@
 
         </ul>
 
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('showadduser') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Add user</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="{{ route('show.user') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Show user</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
+
+
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
 
+
+
         <div class="pagetitle">
-            <h1>Blank Page</h1>
+            <h1>Form Layouts</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Pages</li>
-                    <li class="breadcrumb-item active">Blank</li>
+                    <li class="breadcrumb-item">Forms</li>
+                    <li class="breadcrumb-item active">Layouts</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
         <section class="section">
-            <div class="row">
-                <div class="col-lg-6">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Example Card</h5>
-                            <h1>Welcome, {{ $username }}</h1>
+                            <h5 class="card-title">Default Table</h5>
+
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <th scope="row">{{ $count++ }}</th>
+                                            <!-- Increment count for each row -->
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->role }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <!-- End Default Table Example -->
                         </div>
                     </div>
-
                 </div>
 
-                <div class="col-lg-6">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Example Card</h5>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit">Logout</button>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
     </main><!-- End #main -->
 
