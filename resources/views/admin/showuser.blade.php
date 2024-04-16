@@ -204,7 +204,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('showadduser') }}">
+                <a class="nav-link collapsed" href="{{ route('admin.showadduser') }}">
                     <i class="bi bi-grid"></i>
                     <span>Add user</span>
                 </a>
@@ -215,9 +215,20 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="{{ route('show.user') }}">
+                <a class="nav-link " href="{{ route('admin.show.user') }}">
                     <i class="bi bi-grid"></i>
                     <span>Show user</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed " href="{{ route('admin.createdepartmentpg') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>create department</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 

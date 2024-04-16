@@ -177,8 +177,6 @@
                             </a>
                         </li>
 
-
-
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
@@ -190,27 +188,15 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
+
+
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link collapsed" href="{{ route('incharge.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-
-            </li><!-- End Dashboard Nav -->
-
-        </ul>
-
-
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.showadduser') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>Add user</span>
-                </a>
             </li><!-- End Dashboard Nav -->
 
         </ul>
@@ -218,21 +204,15 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.show.user') }}">
+                <a class="nav-link" href="{{ route('incharge.addStudents') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Show user</span>
+                    <span>Add Students</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
         </ul>
-        <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed " href="{{ route('admin.createdepartmentpg') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>create department</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+        
 
         </ul>
 
@@ -242,108 +222,77 @@
 
     <main id="main" class="main">
 
+
+
         <div class="pagetitle">
-            <h1>Blank Page</h1>
+            <h1>Form Layouts</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Pages</li>
-                    <li class="breadcrumb-item active">Blank</li>
+                    <li class="breadcrumb-item">Forms</li>
+                    <li class="breadcrumb-item active">Layouts</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
-
-
-
-        <section class="section dashboard">
-
-            <div class="row">
-
-
-                <!-- Customers Card -->
-                <div class="col-xxl-6 col-xl-12">
-                    <div class="card info-card customers-card">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Incharge<span>| department</span></h5>
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6>{{ $userCount}}</h6>
-                                </div>
-                            </div>
-                            <!-- Use Bootstrap button styles for the "see all" link -->
-                            <a href="{{ route('admin.show.user') }}" class="btn btn-secondary text-light mt-3">Show all</a>
-                        </div>
-                    </div>
-                </div><!-- End Customers Card -->
-
-
-                 <!-- Customers Card -->
-                 <div class="col-xxl-6 col-xl-12">
-                    <div class="card info-card customers-card">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Students<span>| department</span></h5>
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6></h6>
-                                </div>
-                            </div>
-                            <!-- Use Bootstrap button styles for the "see all" link -->
-                            <a href="show all" class="btn btn-secondary text-light mt-3">Show all</a>
-                        </div>
-                    </div>
-                </div><!-- End Customers Card -->       
-
-            </div>
-
-        </section>
-
-
         <section class="section">
-            <div class="row">
-                <div class="col-lg-6">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Example Card</h5>
-                            <h1>Welcome, {{ $username }}</h1>
+                            <h5 class="card-title">Horizontal Form</h5>
+
+                           
+                            <!-- Horizontal Form -->
+                            <form action="{{ route('add.user') }}" method="POST">
+                                @csrf <!-- CSRF protection for Laravel forms -->
+                                <div class="row mb-3">
+                                    <label for="inputName" class="col-sm-2 col-form-label">Student Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputName" name="name">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputUsername" class="col-sm-2 col-form-label">department</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputUsername"
+                                            name="department">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail" name="email">
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputEmail" class="col-sm-2 col-form-label">Age</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="inputEmail" name="age">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword"
+                                            name="password">
+                                    </div>
+                                </div>
+                               
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                            </form><!-- End Horizontal Form -->
+
+
                         </div>
                     </div>
 
-                </div>
 
-                <div class="col-lg-6">
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Example Card</h5>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit">Logout</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Example Card</h5>
-
-                                <a href="{{ route('admin.showadduser') }}">add user</a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-        </section>
 
     </main><!-- End #main -->
 

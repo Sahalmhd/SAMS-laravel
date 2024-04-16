@@ -191,9 +191,21 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link " href="{{ route('incharge.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+
+
+        </ul>
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('incharge.addStudents') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Add Students</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 

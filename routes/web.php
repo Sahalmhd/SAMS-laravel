@@ -31,6 +31,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['authCheck'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'admin'])->name('dashboard');
+        route::get('/adduser', [adminController::class, 'showadduser'])->name('showadduser');
+        Route::get('/show-user', [AdminController::class, 'show_allusers'])->name('show.user');
+        Route::get('/create', [AdminController::class, 'createdepartmentpg'])->name('createdepartmentpg');
+
+
+        Route::post('/add-user', [AdminController::class, 'add_user'])->name('add.user');
+
+        Route::post('/Cdepartment', [AdminController::class, 'createDepartment'])->name('createdepartment');
     });
 
     Route::prefix('hod')->name('hod.')->group(function () {
@@ -39,17 +47,13 @@ Route::middleware(['authCheck'])->group(function () {
 
     Route::prefix('student')->name('incharge.')->group(function () {
         Route::get('/dashboard', [InchargeController::class, 'incharge'])->name('dashboard');
+        route::get('/addStudents', [InchargeController::class, 'addStudents'])->name('addStudents');
     });
 });
 
 
 
-route::get('/adduser',[adminController::class,'showadduser'])->name('showadduser');    
 
 Route::post('/add-user', [AdminController::class, 'add_user'])->name('add.user');
 
-Route::get('/show-user', [AdminController::class, 'show_allusers'])->name('show.user');
-
-
-
-
+Route::post('/Cdepartment', [AdminController::class, 'createDepartment'])->name('createdepartment');

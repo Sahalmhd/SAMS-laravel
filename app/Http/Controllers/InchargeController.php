@@ -20,4 +20,12 @@ class InchargeController extends Controller
             return redirect()->route('login.form');
         }
     }
+
+    public function addStudents(){
+
+        // Get the authenticated user
+        $user = Auth::user();
+
+        return view('incharge.addStudents',['username' => $user->name]);
+    }
 }

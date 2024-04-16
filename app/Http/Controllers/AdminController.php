@@ -6,9 +6,15 @@ use Illuminate\Http\Request; // Correct import for handling incoming HTTP reques
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException; // Import QueryException
+
+
 
 
 use App\Models\User;
+use App\Models\Department;
+
 
 class AdminController extends Controller
 {
@@ -69,12 +75,12 @@ class AdminController extends Controller
             Session::flash('success', 'User created successfully');
 
             // Redirect back to the admin dashboard
-            return redirect()->route('showadduser')->with('success', 'User created successfully');
+            return redirect()->route('admin.showadduser')->with('success', 'User created successfully');
         } catch (\Exception $e) {
             Session::flash('failed', 'failed to create user ');
 
             // Return an error response
-            return redirect()->route('showadduser')->with('failde', 'User created falid');
+            return redirect()->route('admin.showadduser')->with('failde', 'User created falid');
         }
     }
 
@@ -86,5 +92,50 @@ class AdminController extends Controller
 
         $users = User::all();
         return view('admin.showuser', ['username' => $user->name, 'users' => $users,'count' => $count]);
+    }
+
+    public function createDepartmentpg(){
+        $user = Auth::user();
+        $inchargeNames = User::where('role', 'incharge')->pluck('name', 'id');
+
+        return view('admin.createdepartment',['username' => $user->name, 'inchargeNames' => $inchargeNames,]);
+    }
+
+
+
+    public function createDepartment(Request $request){
+        {
+            try {
+                // Validation Rules
+                $validator = Validator::make($request->all(), [
+                    'Dname' => 'required|string',
+                    'division' => 'required|string',
+                    'incharge_id' => 'required|exists:users,id' // Assuming incharge_id references the users table
+                ]);
+        
+                // Check if validation fails
+                if ($validator->fails()) {
+                    return redirect()->route('admin.createdepartmentpg')->withErrors($validator)->withInput();
+                }
+        
+                // Create a new department instance
+                $department = new Department();
+                $department->Dname = $request->input('Dname');
+                $department->division = $request->input('division');
+                $department->incharge_id = $request->input('incharge_id');
+        
+                // Save the department
+                $department->save();
+        
+                // Return success message
+                return redirect()->route('admin.createdepartmentpg')->with('success', 'Department created successfully');
+            } catch (QueryException $ee) {
+                // Handle query exception
+                return redirect()->route('admin.createdepartmentpg')->with('error', 'An error occurred while creating the department.');
+            } catch (\Exception $ee) {
+                // Handle other exceptions
+                return redirect()->route('admin.createdepartmentpg')->with('error', 'An unexpected error occurred.');
+            }
+        }
     }
 }

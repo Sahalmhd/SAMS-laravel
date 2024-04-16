@@ -204,7 +204,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('showadduser') }}">
+                <a class="nav-link" href="{{ route('admin.showadduser') }}">
                     <i class="bi bi-grid"></i>
                     <span>Add user</span>
                 </a>
@@ -215,13 +215,24 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('show.user') }}">
+                <a class="nav-link collapsed" href="{{ route('admin.show.user') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Add user</span>
+                    <span>Show user</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
         </ul>
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed " href="{{ route('admin.createdepartmentpg') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>create department</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+        </ul>
+
 
 
 
@@ -263,7 +274,7 @@
                                 </div>
                             @endif
                             <!-- Horizontal Form -->
-                            <form action="{{ route('add.user') }}" method="POST">
+                            <form action="{{ route('admin.add.user') }}" method="POST">
                                 @csrf <!-- CSRF protection for Laravel forms -->
                                 <div class="row mb-3">
                                     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -296,16 +307,16 @@
                                     <div class="col-sm-10">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="role"
-                                                id="gridRadios1" value="HOD" checked>
+                                                id="gridRadios1" value="incharge" checked>
                                             <label class="form-check-label" for="gridRadios1">
-                                                HOD
+                                                incharge
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="role"
-                                                id="gridRadios2" value="incharge">
+                                                id="gridRadios2" value="HOD">
                                             <label class="form-check-label" for="gridRadios2">
-                                                Incharge
+                                                HOD
                                             </label>
                                         </div>
                                     </div>
